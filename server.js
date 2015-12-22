@@ -1,10 +1,16 @@
 var port = 3030;
 var express = require('express');
 var stylus = require('stylus');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
+
+function compile(str, path) {
+    return stylus(str).set('filename',path);
+}
 
 app.set('views', __dirname + '/server/views');
 app.set('view engine','jade');
@@ -17,6 +23,8 @@ app.use(stylus.middleware(
 ));
 
 app.use(express.static(__dirname + '/public'));
+app.use(logger('dev'));
+app.use(bodyParser());
 
 app.get('*',function(req, res) {
     res.render('index');
