@@ -24,7 +24,7 @@ app.use(stylus.middleware(
 
 app.use(express.static(__dirname + '/public'));
 app.use(logger('dev'));
-app.use(bodyParser());
+app.use(bodyParser.json());
 
 app.get('*',function(req, res) {
     res.render('index');
