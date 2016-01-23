@@ -16,4 +16,4 @@ exports.authenticate = function(req, res, next) {
         })
     });
     auth(req, res, next);
-}
+};
