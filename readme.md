@@ -21,4 +21,10 @@ Welcome to my MEAN stack app done with the help of *pluralsight* tutorial
 1.  Refactored the login route to auth.js
 1.  Logout code added
 
+*************************************************************************************************************
+###Changes as of 01/02/2016
+1.  Server.js code refactored
+1.  Persistent login implmented
+1.  Roles added, admin role working
+
 >May the force be with me

@@ -8,7 +8,7 @@ angular.module('app').controller('mvNavBarLoginCtrl', function ($scope, $http, m
                 mvNotifier.notify('Failed to log in','error');
             }
         });
-    }
+    };
 
     $scope.signout = function() {
         mvAuth.logoutUser().then(function(){
@@ -17,5 +17,5 @@ angular.module('app').controller('mvNavBarLoginCtrl', function ($scope, $http, m
             mvNotifier.notify('You have successfully logged out','info');
             $location.path('/');
         })
-    }
+    };
 });
