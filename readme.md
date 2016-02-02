@@ -27,4 +27,8 @@ Welcome to my MEAN stack app done with the help of *pluralsight* tutorial
 1.  Persistent login implmented
 1.  Roles added, admin role working
 
+*************************************************************************************************************
+###Changes as of 02/02/2016
+1.  User list authorization added
+
 >May the force be with me
