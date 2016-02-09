@@ -1,17 +1,17 @@
-body {
-  padding-top: 61px;
-}
 .navbar-header a.navbar-brand h6 {
   color: #ccc;
 }
 .navbar-brand img {
   margin-top: -15px;
 }
+.footer {
+  position: absolute;
+  width: 100%;
+  min-height: 40px;
+  background-color: #f5f5f5;
+}
 footer {
   padding: 15px 0;
-}
-footer p {
-  border-top: 1px solid #d7e0e2;
 }
 .navbar-form .form-group {
   margin-left: 10px;

@@ -11,7 +11,7 @@ module.exports = function(app) {
     });
 
     app.get('/partials/*', function (req, res) {
-        res.render('../../public/app/' + req.params[0]);
+        res.render('../../public/app/' + req.params[0]); //req.params[0] matches the * in /partials/* route
     });
 
     app.post('/login', auth.authenticate);

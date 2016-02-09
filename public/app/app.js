@@ -10,8 +10,8 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 }
     };
 
-    $routeProvider
-        .when('/',
+    $routeProvider  //routeProvider has two callbacks when() method - for a matched pattern or otherwise()
+        .when('/', //root of the app, opens up main.jade and mvMainCtrl provides data for display
                 {
                     templateUrl: '/partials/main/main',
                     controller: 'mvMainCtrl'
@@ -21,7 +21,7 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 {
                     templateUrl: '/partials/admin/user-list',
                     controller: 'mvUserListCtrl',
-                    resolve: routeRoleChecks.admin
+                    resolve: routeRoleChecks.admin //takes a function which returns a promise
                 });
 });
 
