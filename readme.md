@@ -31,4 +31,9 @@ Welcome to my MEAN stack app done with the help of *pluralsight* tutorial
 ###Changes as of 02/02/2016
 1.  User list authorization added
 
+===========
+###Changes as of 18/02/2016
+1.  Added Sign Up functionality
+2.  Made respective changes to schema by adding validations
+
 >May the force be with me

@@ -11,6 +11,10 @@ module.exports = function(app, config) {
         return stylus(str).set('filename', path);
     }
 
+    if (app.get('env') === 'development') {
+        app.locals.pretty = true;
+    }
+
     app.set('views', config.rootPath + '/server/views');
     app.set('view engine', 'jade');
     app.use(logger('dev'));

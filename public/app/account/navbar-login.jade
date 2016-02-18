@@ -5,6 +5,7 @@
         .form-group
             input.form-control(placeholder="Password", type="password", ng-model="password")
         button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+        a.btn.btn-warning(href="/signup" data-toggle="tooltip" data-placement="left" title="Register yourself at multivision!" role="button") Sign Up
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
         li.dropdown
             a.dropdown-toggle(href="", data-toggle="dropdown")
@@ -16,3 +17,5 @@
                     a(href="/admin/users") User Admin
                 li
                     a(href="", ng-click="signout()") Sign Out
+                li
+                    a(href="/myprofile") My Profile
