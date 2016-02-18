@@ -27,6 +27,6 @@
     "bootstrap": "~3.3.6"
   },
   "resolutions": {
-    "jquery": "1.10.2"
+    "jquery": "~2.1.4"
   }
 }
