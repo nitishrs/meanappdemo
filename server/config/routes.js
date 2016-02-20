@@ -25,4 +25,6 @@ module.exports = function(app) {
             bootstrappedUser : req.user
         });
     });
+
+//    app.get('/myprofile', users.getCurrentUserData);
 };

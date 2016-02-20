@@ -36,4 +36,9 @@ Welcome to my MEAN stack app done with the help of *pluralsight* tutorial
 1.  Added Sign Up functionality
 2.  Made respective changes to schema by adding validations
 
+===========
+###Changes as of 20/02/2016
+1.  Added 'my profile' page, not part of the tutorial
+2.  Added 404,403 error pages and respective changes locationProvider and routeChangeError objects
+
 >May the force be with me

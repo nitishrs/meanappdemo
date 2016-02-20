@@ -20,4 +20,4 @@ myApp.controller('mvSignupCtrl', function($scope, $location, mvNotifier, mvAuth,
             }
         );
     }
-})
+});

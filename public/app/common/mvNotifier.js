@@ -5,6 +5,8 @@ myApp.value('mvToastr',toastr);
 myApp.factory('mvNotifier', function(mvToastr){
     return {
         notify: function(msg, type) {
+            mvToastr.options.positionClass = 'toast-bottom-center';
+            mvToastr.options.closeButton = true;
             if(type === 'success') {
                 mvToastr.success(msg);
             } else if(type === 'error') {

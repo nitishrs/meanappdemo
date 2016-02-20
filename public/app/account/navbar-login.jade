@@ -1,9 +1,9 @@
 .navbar-right(ng-controller="mvNavBarLoginCtrl")
     form.navbar-form(ng-hide="identity.isAuthenticated()")
         .form-group
-            input.form-control(placeholder="Email", ng-model="username")
+            input.form-control(placeholder="Email", ng-model="username" required)
         .form-group
-            input.form-control(placeholder="Password", type="password", ng-model="password")
+            input.form-control(placeholder="Password", type="password", ng-model="password" required)
         button.btn.btn-primary(ng-click="signin(username, password)") Sign In
         a.btn.btn-warning(href="/signup" data-toggle="tooltip" data-placement="left" title="Register yourself at multivision!" role="button") Sign Up
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
