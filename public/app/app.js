@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource','ngRoute']);
+angular.module('app', ['ngResource','ngRoute','ngMessages']);
 
 angular.module('app').config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
@@ -9,8 +9,8 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 }
         },
         isLoggedIn: {
-                auth: function(mvIdentity) {
-                    return mvIdentity.isLoggedIn();
+                auth: function(mvAuth) {
+                    return mvAuth.isLoggedIn();
                 }
         }
     };
@@ -26,6 +26,13 @@ angular.module('app').config(function($routeProvider, $locationProvider){
             {
                 templateUrl : '/partials/account/myprofile',
                 controller: 'mvProfileDisplayCtrl',
+                resolve: routeRoleChecks.isLoggedIn
+            }
+        )
+        .when('/editprofile',
+            {
+                templateUrl : '/partials/account/editprofile',
+                controller: 'mvEditProfileCtrl',
                 resolve: routeRoleChecks.isLoggedIn
             }
         )

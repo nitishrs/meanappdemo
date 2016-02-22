@@ -40,8 +40,30 @@ myApp.factory('mvAuth', function($http, mvIdentity, $q, mvUser) {
             return dfd.promise;
         },
 
+        updateCurrentUser: function(newUserData) {
+            var dfd = $q.defer();
+
+            var cloneUser = angular.copy(mvIdentity.currentUser);
+            angular.extend(cloneUser, newUserData);
+            cloneUser.$update().then(function() {
+                mvIdentity.currentUser = cloneUser;
+                dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
+
         authorizeCurrentUserForRoute: function(role) {
             if(mvIdentity.isAuthorized(role)) {
+                return true;
+            } else {
+                return $q.reject('not authorized');
+            }
+        },
+
+        isLoggedIn: function() {
+            if(mvIdentity.isAuthenticated()) {
                 return true;
             } else {
                 return $q.reject('not authorized');

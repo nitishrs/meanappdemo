@@ -11,13 +11,6 @@ myApp.factory('mvIdentity',function($window, $q, mvUser) {
         isAuthenticated: function() {
             return !!this.currentUser;
         },
-        isLoggedIn: function() {
-            if(!!this.currentUser) {
-                return true;
-            } else {
-                return $q.reject('not found');
-            }
-        },
         isAuthorized: function(role) {
             return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
         }
