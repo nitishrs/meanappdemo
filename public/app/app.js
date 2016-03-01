@@ -58,7 +58,12 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 templateUrl: 'partials/account/signup',
                 controller: 'mvSignupCtrl'
             }
-        );
+        )
+        .when('/courses',
+        {
+            templateUrl: 'partials/courses/course-list',
+            controller: 'mvCourseListCtrl'
+        });
 });
 
 angular.module('app').run(function($rootScope, $location) {
