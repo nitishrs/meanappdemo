@@ -1,6 +1,7 @@
-.panel.panel-primary
+.panel.panel-secondary
     .panel-heading.panel-title.text-center New Courses
     .panel-body
         ul.list-group
-            li.list-group-item(ng-repeat="course in courses | orderBy:'published':true | limitTo: 10") {{course.title}}
+            li.list-group-item(ng-repeat="course in courses | orderBy:'published':true | limitTo: 10")
+                a(href="course/{{course._id}}") {{course.title}}
                 span.badge {{course.published | date:'MMM d'}}

@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource','ngRoute','ngMessages']);
+angular.module('app', ['ngResource','ngRoute','ngMessages','ngTagsInput']);
 
 angular.module('app').config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
@@ -12,6 +12,11 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 auth: function(mvAuth) {
                     return mvAuth.isLoggedIn();
                 }
+        },
+        isTeacher: {
+                auth: function(mvAuth) {
+                    return mvAuth.authorizeCurrentUserForRoute('teacher');
+                }
         }
     };
 
@@ -22,6 +27,12 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 controller: 'mvMainCtrl'
             }
         )
+        .when('/course/:id',
+            {
+                templateUrl: '/partials/courses/course',
+                controller: 'mvCourseDisplayCtrl'
+            }
+         )
         .when('/myprofile',
             {
                 templateUrl : '/partials/account/myprofile',
@@ -53,17 +64,36 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 templateUrl: 'partials/error/404'
             }
         )
-        .when('/signup',
+        .when('/signup-user',
             {
-                templateUrl: 'partials/account/signup',
+                templateUrl: 'partials/account/signup-user',
                 controller: 'mvSignupCtrl'
             }
         )
+        .when('/signup-teacher',
+            {
+                templateUrl: 'partials/account/signup-teacher',
+                controller: 'mvSignupCtrl'
+            }
+        )
+        .when('/signup',
+            {
+                templateUrl: 'partials/account/signup'
+            }
+        )
         .when('/courses',
-        {
-            templateUrl: 'partials/courses/course-list',
-            controller: 'mvCourseListCtrl'
-        });
+            {
+                templateUrl: 'partials/courses/course-list',
+                controller: 'mvCourseListCtrl'
+            }
+        )
+        .when('/courses/addcourse',
+            {
+                templateUrl: 'partials/courses/addcourse',
+                controller: 'mvCourseAddCtrl',
+                resolve: routeRoleChecks.isTeacher
+            }
+        );
 });
 
 angular.module('app').run(function($rootScope, $location) {

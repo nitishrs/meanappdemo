@@ -15,11 +15,13 @@ module.exports = function(app) {
         res.end("File uploaded");
     });
 
-    app.get('/api/users', auth.requiresRole('admin'), users.getUsers);
-    app.post('/api/users', users.createUser);
-    app.put('/api/users', users.updateUser);
+    app.get('/api/users', auth.requiresRole('admin'), users.getUsers); //display user route
+    app.post('/api/users', users.createUser); //new user route
+    app.put('/api/users', users.updateUser); //edit user route
 
-    app.get('/api/courses', courses.getCourses);
+    app.get('/api/courses', courses.getCourses); //display courses route
+    app.get('/api/courses/:id', courses.getCourseById); //display by id route
+    app.post('/api/courses', courses.createCourse); //add new course route
 
     app.get('/partials/*', function (req, res) {
         res.render('../../public/app/' + req.params[0]); //req.params[0] matches the * in /partials/* route

@@ -1,20 +1,34 @@
-.navbar-right(ng-controller="mvNavBarLoginCtrl")
-    form.navbar-form(ng-hide="identity.isAuthenticated()")
-        .form-group
-            input.form-control(placeholder="Email", ng-model="username" required)
-        .form-group
-            input.form-control(placeholder="Password", type="password", ng-model="password" required)
-        button.btn.btn-primary(ng-click="signin(username, password)") Sign In
-        a.btn.btn-warning(href="/signup" data-toggle="tooltip" data-placement="left" title="Register yourself at multivision!" role="button") Sign Up
+ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")
+    li.dropdown(ng-hide="identity.isAuthenticated()")
+        a.dropdown-toggle(href="#" id="dropdown-login-link" data-toggle="dropdown" class="btn btn-primary")
+            b LogIn
+            span.caret
+        ul.dropdown-menu
+            li
+                .row
+                    .col-md-12
+                        form.navbar-form(ng-hide="identity.isAuthenticated()")
+                            .form-group
+                                input.form-control(style="margin-bottom:15px" placeholder="Email", ng-model="username" required)
+                            .form-group
+                                input.form-control(style="margin-bottom:15px" placeholder="Password", type="password", ng-model="password" required)
+                            button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+                            a.btn.btn-warning(href="/signup" title="Register yourself at multivision!") Sign Up
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
         li.dropdown
-            a.dropdown-toggle(href="", data-toggle="dropdown")
+            a.dropdown-toggle(href="#", data-toggle="dropdown")
                 span.glyphicon.glyphicon-user
                 | &nbsp; {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
                 b.caret
             ul.dropdown-menu
                 li(ng-show="identity.currentUser.isAdmin()")
-                    a(href="/admin/users") User Admin
+                    a(href="/admin/users") Users List
+                li(ng-show="identity.currentUser.isAdmin()")
+                    a(href="/admin/dashboard") Dashboard
+                li(ng-show="identity.currentUser.isTeacher()")
+                    a(href="/courses/mycourses") My Courses
+                li(ng-show="identity.currentUser.isTeacher()")
+                    a(href="/courses/addcourse") Add Course
                 li
                     a(href="", ng-click="signout()") Sign Out
                 li

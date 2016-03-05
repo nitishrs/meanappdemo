@@ -7,6 +7,8 @@ var userSchema = mongoose.Schema({
     username: {type: String, required: '{PATH} is required!', unique: true},
     salt: {type: String, required: '{PATH} is required!'},
     hashed_pwd: {type: String, required: '{PATH} is required!'},
+    courses_taught: [String],
+    courses_undertaken: [String],
     roles: [String]
 });
 
@@ -33,7 +35,9 @@ function createDefaultUsers() {
                 username: 'nitishrs',
                 salt: salt,
                 hashed_pwd: hash,
-                roles: ['admin']
+                courses_taught: [],
+                courses_undertaken: [],
+                roles: ['subscriber','teacher','admin']
             });
 
             salt = encrypt.createSalt();
@@ -44,7 +48,9 @@ function createDefaultUsers() {
                 username: 'kanteshyk',
                 salt: salt,
                 hashed_pwd: hash,
-                roles: []
+                courses_taught: ['56d3fb120d9749a023e8eac5','56d3fb120d9749a023e8eac7'],
+                courses_undertaken: ['56d3fb120d9749a023e8eacc','56d3fb120d9749a023e8eace','56d3fb120d9749a023e8ead0'],
+                roles: ['subscriber','teacher']
             });
 
             salt = encrypt.createSalt();
@@ -54,7 +60,36 @@ function createDefaultUsers() {
                 lastName: 'K S',
                 username: 'sunithks',
                 salt: salt,
-                hashed_pwd: hash
+                hashed_pwd: hash,
+                courses_taught: ['56d3fb120d9749a023e8eace'],
+                courses_undertaken: ['56d3fb120d9749a023e8eac5','56d3fb120d9749a023e8eac7','56d3fb120d9749a023e8ead0'],
+                roles: ['subscriber','teacher']
+            });
+
+            salt = encrypt.createSalt();
+            hash = encrypt.hashPwd(salt, '123');
+            User.create({
+                firstName: 'Smitha',
+                lastName: 'Bhandalkar',
+                username: 'smithapb',
+                salt: salt,
+                hashed_pwd: hash,
+                courses_taught: ['56d3fb120d9749a023e8ead0','56d3fb120d9749a023e8eacc'],
+                courses_undertaken: ['56d3fb120d9749a023e8eac5','56d3fb120d9749a023e8eac7'],
+                roles: ['subscriber','teacher']
+            });
+
+            salt = encrypt.createSalt();
+            hash = encrypt.hashPwd(salt, '123');
+            User.create({
+                firstName: 'Manoj',
+                lastName: 'Deshpande',
+                username: 'manojd',
+                salt: salt,
+                hashed_pwd: hash,
+                courses_taught: [],
+                courses_undertaken: ['56d3fb120d9749a023e8eac5','56d3fb120d9749a023e8eac7','56d3fb120d9749a023e8ead0','56d3fb120d9749a023e8eacc'],
+                roles: ['subscriber']
             });
         }
     });

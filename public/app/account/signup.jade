@@ -1,34 +1,18 @@
 .container
-    .well
-        form.form-horizontal(name="signupForm")
-            fieldset
-                legend Sign Up for Multivision
-                .form-group
-                    label.col-md-2.control-label(for="email") Email
-                    .col-md-10
-                        input.form-control(name="email", type="email", placeholder="Email", ng-model="email", required)
-                        div(ng-messages="signupForm.email.$error")
-                            p(ng-message="email") Enter a valid email ID
-                .form-group
-                    label.col-md-2.control-label(for="password") Password
-                    .col-md-10
-                        input.form-control(name="password", type="password", placeholder="Password", ng-minlength="6", ng-maxlength="12", ng-model="password", required)
-                        div(ng-messages="signupForm.password.$error")
-                            p(ng-message="minlength") Your password should have at least 6 characters
-                            p(ng-message="maxlength") Your password cannot exceed 12 characters
-                .form-group
-                    label.col-md-2.control-label(for="fname") First Name
-                    .col-md-10
-                        input.form-control(name="fname", placeholder="First Name", ng-model="fname", required)
-                .form-group
-                    label.col-md-2.control-label(for="lname") Last Name
-                    .col-md-10
-                        input.form-control(name="lname", placeholder="Last Name", ng-model="lname", required)
-                .form-group
-                    .col-md-10.col-md-offset-2
-                        .pull-left
-                            p Please fill out all the fields
-                        .pull-right
-                            button.btn.btn-primary(ng-click="signup()", ng-disabled="signupForm.$invalid") Submit
-                            | &nbsp;
-                            a.btn.btn-default(href="/") Cancel
+    .row
+        .col-md-6
+            .panel.panel-success
+                .panel-heading.panel-title.text-center Are you a teacher?
+                .panel-body
+                    p If you are an expert on topics and you are interested in teaching, sign up as a Teacher! The people are yet to benefit from your skills and you, from their money!
+                    br
+                    .text-center
+                        a.btn.btn-primary(href="/signup-teacher") Sign Up
+        .col-md-6
+            .panel.panel-info
+                .panel-heading.panel-title.text-center Do you want to learn?
+                .panel-body
+                    p Want to master your favorite programming language? Need to make a CMS and impress your supervisor? You've come to the right place! Sign up for free now!
+                    br
+                    .text-center
+                        a.btn.btn-primary(href="/signup-user") Sign Up

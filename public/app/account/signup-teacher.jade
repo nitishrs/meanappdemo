@@ -1,0 +1,48 @@
+.container
+    .well
+        form.form-horizontal(name="signupForm")
+            fieldset
+                legend Sign Up for Multivision as a Course Author (Instructor)
+                .form-group
+                    label.col-md-2.control-label(for="email") Email
+                    .col-md-10
+                        input.form-control(name="email", type="email", placeholder="Email", ng-model="email", required)
+                        div(ng-messages="signupForm.email.$error")
+                            p(ng-message="email") Enter a valid email ID
+                .form-group
+                    label.col-md-2.control-label(for="password") Password
+                    .col-md-10
+                        input.form-control(name="password", type="password", placeholder="Password", ng-minlength="6", ng-maxlength="12", ng-model="password", required)
+                        div(ng-messages="signupForm.password.$error")
+                            p(ng-message="minlength") Your password should have at least 6 characters
+                            p(ng-message="maxlength") Your password cannot exceed 12 characters
+                .form-group
+                    label.col-md-2.control-label(for="institution") Institute
+                    .col-md-10
+                        select.form-control
+                            option(value="one") Charles Xavier Institute of X-Technology (X-Tech)
+                            option(value="two") University of Arkham, Gotham
+                            option(value="three") Blogwarts School of Geekcraft and Bigotry
+                            option(value="four") Deathstar Academy of Destruction
+                            option(value="five") MIT (Mordor Institute of Trollology)
+                        .bs-callout.bs-callout-danger
+                            p Currently we accept only course instructors/authors with one or more certified degrees from the list of colleges above. If you do not have a degree from the above list of colleges, we sincerely suggest you make yourself useful and get a degree from there.
+                .form-group
+                    label.col-md-2.control-label(for="fname") First Name
+                    .col-md-10
+                        input.form-control(name="fname", placeholder="First Name", ng-model="fname", required)
+                .form-group
+                    label.col-md-2.control-label(for="lname") Last Name
+                    .col-md-10
+                        input.form-control(name="lname", placeholder="Last Name", ng-model="lname", required)
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .bs-callout.bs-callout-warning
+                            p All fields are mandatory.
+                            p By signing up as a teacher/instructor/author you agree to our Terms & Conditions. The Terms & Conditions are subject to change unconditionally and sometimes will be granted the power to make you a pawn in Wizard Chess or incarcerate you on Mustafar if you dare defy any of our stringent laws. But hey, laws aside... Happy Teaching!&nbsp;
+                                span.glyphicon.glyphicon-education
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="signup()", ng-disabled="signupForm.$invalid") Submit
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel
