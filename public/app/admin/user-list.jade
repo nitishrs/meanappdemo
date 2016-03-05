@@ -1,5 +1,24 @@
 .container
-    h3 List of Users
-    table.table
-        tr(ng-repeat="user in users")
-            td {{user.firstName + " " + user.lastName}}
+    .row
+        .col-md-12
+            h1.page-header Users
+        .col-md-12
+            .panel.panel-default
+                .panel-heading User Management
+                .panel-body
+                    table.table.table-striped
+                        thead
+                            tr
+                                th User
+                                th Roles
+                                th Actions
+                        tbody
+                            tr(ng-repeat="user in users")
+                                td {{user.firstName + " " + user.lastName}}
+                                td
+                                    ul.list-inline
+                                        li(ng-repeat="roles in user.roles") {{roles}}
+                                td
+                                    button.btn.btn-primary.row-action-buttons View
+                                    button.btn.btn-warning.row-action-buttons Edit
+                                    button.btn.btn-danger.row-action-buttons Delete

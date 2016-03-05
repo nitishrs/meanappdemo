@@ -1,0 +1,35 @@
+.container
+    .row
+        .col-md-12
+            h1.page-header Dashboard
+    .row
+        .col-md-3
+            .panel.panel-primary
+                .panel-heading
+                    .row
+                        .col-xs-3
+                            i.fa.fa-users.fa-5x
+                        .col-xs-9.text-right
+                            .huge {{usersCount}}
+                            div Users
+                a(href="admin/users")
+                    .panel-footer
+                        span.pull-left View Details
+                        .clearfix
+        .col-md-3
+            .panel.panel-green
+                .panel-heading
+                    .row
+                        .col-xs-3
+                            i.fa.fa-book.fa-5x
+                        .col-xs-9.text-right
+                            .huge {{coursesCount}}
+                            div Courses
+                a(href="admin/courses")
+                    .panel-footer
+                        span.pull-left View Details
+                        .clearfix
+
+
+
+

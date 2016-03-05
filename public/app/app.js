@@ -3,7 +3,7 @@ angular.module('app', ['ngResource','ngRoute','ngMessages','ngTagsInput']);
 angular.module('app').config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
     var routeRoleChecks = {
-        admin: {
+        isAdmin: {
                 auth: function(mvAuth) {
                     return mvAuth.authorizeCurrentUserForRoute('admin');
                 }
@@ -51,7 +51,14 @@ angular.module('app').config(function($routeProvider, $locationProvider){
             {
                 templateUrl: '/partials/admin/user-list',
                 controller: 'mvUserListCtrl',
-                resolve: routeRoleChecks.admin //takes a function which returns a promise
+                resolve: routeRoleChecks.isAdmin //takes a function which returns a promise
+            }
+        )
+        .when('/admin/courses',
+            {
+                templateUrl: '/partials/admin/course-list',
+                controller: 'mvCourseListAdminCtrl',
+                resolve: routeRoleChecks.isAdmin
             }
         )
         .when('/403',
@@ -92,6 +99,13 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 templateUrl: 'partials/courses/addcourse',
                 controller: 'mvCourseAddCtrl',
                 resolve: routeRoleChecks.isTeacher
+            }
+        )
+        .when('/admin/dashboard',
+            {
+                templateUrl: 'partials/admin/dashboard',
+                controller: 'mvDashboardDisplayCtrl',
+                resolve: routeRoleChecks.isAdmin
             }
         );
 });

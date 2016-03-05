@@ -14,7 +14,12 @@
                     tr
                         th Title
                         th Published Date
+                        th Actions
                     tbody
                         tr(ng-repeat="course in courses | filter:searchText | orderBy:sortOrder")
                             td {{course.title}}
                             td {{course.published | date}}
+                            td
+                                button.btn.btn-primary.row-action-buttons View
+                                button.btn.btn-warning.row-action-buttons Edit
+                                button.btn.btn-danger.row-action-buttons Delete
