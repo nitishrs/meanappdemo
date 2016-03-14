@@ -9,7 +9,7 @@ ul.nav.navbar-nav.navbar-right(ng-controller="mvNavBarLoginCtrl")
                     .col-md-12
                         form.navbar-form(ng-hide="identity.isAuthenticated()")
                             .form-group
-                                input.form-control(style="margin-bottom:15px" placeholder="Email", ng-model="username" required)
+                                input.form-control(style="margin-bottom:15px" placeholder="Email" ng-model="username" autofocus required)
                             .form-group
                                 input.form-control(style="margin-bottom:15px" placeholder="Password", type="password", ng-model="password" required)
                             button.btn.btn-primary(ng-click="signin(username, password)") Sign In

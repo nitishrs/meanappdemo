@@ -37,14 +37,19 @@ exports.createUser = function(req, res, next) {
 exports.updateUser = function(req, res) {
     var userUpdates = req.body;
 
-    if(req.user._id != userUpdates._id && !req.user.hasRole('admin')) {
+    if(req.user._id != userUpdates._id) {
         res.status(403);
         return res.end();
     }
 
-    req.user.firstName = userUpdates.firstName;
-    req.user.lastName = userUpdates.lastName;
-    req.user.username = userUpdates.username;
+    if(userUpdates.firstName.length > 0 && userUpdates.lastName.length > 0 && userUpdates.username.length > 0) {
+        req.user.firstName = userUpdates.firstName;
+        req.user.lastName = userUpdates.lastName;
+        req.user.username = userUpdates.username;
+    }
+
+    req.user.courses_undertaken = userUpdates.courses_undertaken;
+    req.user.courses_taught = userUpdates.courses_taught;
 
     if(userUpdates.password && userUpdates.password.length > 0) {
         req.user.salt = encrypt.createSalt();
@@ -57,5 +62,35 @@ exports.updateUser = function(req, res) {
             return res.send({reason: err.toString()});
         }
         res.send(req.user);
+    });
+};
+
+exports.updateUserById = function(req, res) {
+    console.log('in updateUserById function');
+    console.log('id to be updated - ' + req.body._id);
+    User.findOneAndUpdate({_id : req.body._id}, {$set: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
+    }}, {new:true},
+    function(err, docs) {
+        res.send(docs);
+    });
+};
+
+exports.getUserById = function(req, res) {
+    console.log('req.params.id - ' + req.params.id);
+    console.log('req.body._id - ' + req.body._id);
+    User.findOne({_id: req.params.id}, function(err, collection) {
+        res.send(collection);
+    });
+};
+
+exports.deleteUser = function(req, res) {
+    var id = req.params.id;
+    User.findOneAndRemove({_id: id}, function(err, docs) {
+        if(err) {
+            console.log('ERROR in deleting');
+        }
+        res.send(docs);
     });
 };

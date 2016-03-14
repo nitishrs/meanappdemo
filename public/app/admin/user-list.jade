@@ -19,6 +19,6 @@
                                     ul.list-inline
                                         li(ng-repeat="roles in user.roles") {{roles}}
                                 td
-                                    button.btn.btn-primary.row-action-buttons View
-                                    button.btn.btn-warning.row-action-buttons Edit
-                                    button.btn.btn-danger.row-action-buttons Delete
+                                    a.btn.btn-primary.row-action-buttons(href="/admin/viewprofile?id={{user._id}}") View
+                                    a.btn.btn-warning.row-action-buttons(href="/admin/editprofile?id={{user._id}}") Edit
+                                    a.btn.btn-danger.row-action-buttons(ng-click="deleteUser(user._id)") Delete

@@ -10,3 +10,4 @@
         .col-md-4
             h3 Course Description
             p {{course.longdescription}}
+            button.btn.btn-primary(ng-click="addToMyCourse()" ng-show="checkCourseAdd()") Start Learning

@@ -22,3 +22,14 @@ exports.createCourse = function(req, res) {
         res.send(course);
     });
 };
+
+exports.deleteCourse = function(req, res) {
+    var id=req.params.id;
+    console.log('Delete course at server side, id - ' + id);
+    Course.findOneAndRemove({_id: id}, function(err, docs) {
+        if(err) {
+            console.log('ERROR in deleting');
+        }
+        res.json(docs);
+    })
+};

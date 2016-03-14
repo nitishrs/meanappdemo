@@ -1,0 +1,19 @@
+.container
+    .row
+        .col-md-12
+            h1.page-header Users
+        .col-md-12
+            .panel.panel-default
+                .panel-heading User Management
+                .panel-body
+                    table.table.table-striped
+                        thead
+                            tr
+                                th Course Title
+                                th Actions
+                        tbody
+                            tr(ng-repeat="course in courses_undertaken")
+                                td {{course.title}}
+                                td
+                                    a.btn.btn-primary.row-action-buttons(ng-click="learnCourse()") Learn
+                                    a.btn.btn-danger.row-action-buttons(ng-click="removeCoursesUndertaken(course._id)") Delete

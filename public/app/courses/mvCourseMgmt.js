@@ -1,6 +1,6 @@
 var myApp = angular.module('app');
 
-myApp.factory('mvCourseMgmt', function($http, $q, mvCourse) {
+myApp.factory('mvCourseMgmt', function($http, $q, mvCourse, mvIdentity) {
     return {
         createCourse: function(newCourseData) {
             var newCourse = new mvCourse(newCourseData);
@@ -13,6 +13,13 @@ myApp.factory('mvCourseMgmt', function($http, $q, mvCourse) {
             });
 
             return dfd.promise;
+        },
+
+        isCourseUndertaken: function(courseId) {
+            var user = mvIdentity;
+            console.log('receieved course id - ' + courseId);
+            console.log('comparing courses - ' + user.currentUser.courses_undertaken);
+            return user.currentUser.courses_undertaken.indexOf(courseId) > -1;
         }
     }
 });

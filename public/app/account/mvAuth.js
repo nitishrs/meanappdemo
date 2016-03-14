@@ -54,6 +54,21 @@ myApp.factory('mvAuth', function($http, mvIdentity, $q, mvUser) {
             return dfd.promise;
         },
 
+        updateUserById: function(userId, newUserData) {
+            console.log('updating user id at mvAuth - ' + userId);
+            var dfd = $q.defer();
+            var updateUser = mvUser.get({_id: userId}, function() {
+                angular.extend(updateUser, newUserData);
+                console.log('update user id - ' + updateUser._id);
+                updateUser.$updateById({_id: userId}).then(function() {
+                    dfd.resolve();
+                }, function(response) {
+                    dfd.reject(response.data.reason);
+                });
+            });
+            return dfd.promise;
+        },
+
         authorizeCurrentUserForRoute: function(role) {
             if(mvIdentity.isAuthorized(role)) {
                 return true;

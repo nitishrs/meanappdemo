@@ -16,7 +16,19 @@ myApp.factory('mvNotifier', function(mvToastr){
             } else if(type === 'info') {
                 mvToastr.info(msg);
             }
-            console.log(msg);
+        },
+
+        success: function(msg) {
+            mvToastr.success(msg);
+        },
+        warning: function(msg) {
+            mvToastr.warning(msg);
+        },
+        error: function(msg) {
+            mvToastr.error(msg);
+        },
+        info: function(msg) {
+            mvToastr.info(msg);
         }
     }
 });

@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource','ngRoute','ngMessages','ngTagsInput']);
+angular.module('app', ['ngResource','ngRoute','ngMessages','ngTagsInput','ngDialog']);
 
 angular.module('app').config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(true);
@@ -40,6 +40,13 @@ angular.module('app').config(function($routeProvider, $locationProvider){
                 resolve: routeRoleChecks.isLoggedIn
             }
         )
+        .when('/courses/mycourses',
+            {
+                templateUrl: '/partials/account/mycourses',
+                controller: 'mvUserCoursesListCtrl',
+                resolve: routeRoleChecks.isLoggedIn
+            }
+        )
         .when('/editprofile',
             {
                 templateUrl : '/partials/account/editprofile',
@@ -58,6 +65,20 @@ angular.module('app').config(function($routeProvider, $locationProvider){
             {
                 templateUrl: '/partials/admin/course-list',
                 controller: 'mvCourseListAdminCtrl',
+                resolve: routeRoleChecks.isAdmin
+            }
+        )
+        .when('/admin/viewprofile',
+            {
+                templateUrl: 'partials/admin/viewprofile',
+                controller: 'mvProfileViewCtrl',
+                resolve: routeRoleChecks.isAdmin
+            }
+        )
+        .when('/admin/editprofile',
+            {
+                templateUrl: 'partials/admin/editprofile',
+                controller: 'mvAdminProfileEditCtrl',
                 resolve: routeRoleChecks.isAdmin
             }
         )

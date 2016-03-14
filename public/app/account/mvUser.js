@@ -1,6 +1,8 @@
 angular.module('app').factory('mvUser', function($resource) {
-    var UserResource = $resource('/api/users/:id', {_id: "@id"}, {
-        update: {method: 'PUT', isArray: false}
+    var UserResource = $resource('/api/users/:_id', {_id: "@id"}, {
+        update: {method: 'PUT', isArray: false},
+        updateById: {method: 'PUT', isArray: false, parameters: {_id: '0'}},
+        deleteById: {method: 'DELETE', isArray: false, parameters: {_id: '0'}}
     });
 
     UserResource.prototype.isAdmin = function() {

@@ -49,7 +49,7 @@ function createDefaultUsers() {
                 salt: salt,
                 hashed_pwd: hash,
                 courses_taught: ['56d3fb120d9749a023e8eac5','56d3fb120d9749a023e8eac7'],
-                courses_undertaken: ['56d3fb120d9749a023e8eacc','56d3fb120d9749a023e8eace','56d3fb120d9749a023e8ead0'],
+                courses_undertaken: ['56d817a1f00b13a020766c36','56d817a1f00b13a020766c37','56d817a1f00b13a020766c38'],
                 roles: ['subscriber','teacher']
             });
 
@@ -62,7 +62,7 @@ function createDefaultUsers() {
                 salt: salt,
                 hashed_pwd: hash,
                 courses_taught: ['56d3fb120d9749a023e8eace'],
-                courses_undertaken: ['56d3fb120d9749a023e8eac5','56d3fb120d9749a023e8eac7','56d3fb120d9749a023e8ead0'],
+                courses_undertaken: ['56d817a1f00b13a020766c39','56d817a1f00b13a020766c3a','56d817a1f00b13a020766c3b'],
                 roles: ['subscriber','teacher']
             });
 
