@@ -21,6 +21,16 @@ myApp.controller('mvUserCoursesListCtrl', function($scope, mvIdentity, mvNotifie
         });
     };
 
+    var refresh = function(courseId) {
+        for(i = 0; i < courses.length; i++) {
+            if(courses[i]._id === courseId) {
+                courses.splice(i, 1);
+                break;
+            }
+        }
+        $scope.courses_undertaken = courses;
+    };
+
     $scope.removeCoursesUndertaken = function(courseId) {
         console.log('course id to remove - ' + courseId);
         ngDialog.open({
@@ -35,7 +45,7 @@ myApp.controller('mvUserCoursesListCtrl', function($scope, mvIdentity, mvNotifie
                         }
                     );
                     refresh(courseId);
-                    ngDialog.close();
+                    ngDialog.close(courseId);
                 };
             }]
         });
